@@ -10,20 +10,13 @@ class Customer {
 
         this.scene = scene;
 
-        // Customer products
+        // Product names only.
+        // EconomySystem is now the single
+        // source of truth for prices/stock.
         this.products = [
-            {
-                name: "Bread",
-                price: 18
-            },
-            {
-                name: "Chips",
-                price: 10
-            },
-            {
-                name: "Cold Drink",
-                price: 25
-            }
+            "Bread",
+            "Chips",
+            "Cold Drink"
         ];
 
         // State machine
@@ -54,7 +47,7 @@ class Customer {
             }
         ).setOrigin(0.5);
 
-        // Movement
+        // Movement speed
         this.speed = Phaser.Math.Between(
             60,
             100
@@ -65,7 +58,7 @@ class Customer {
 
         console.log(
             "Customer entered:",
-            this.selectedProduct.name
+            this.selectedProduct
         );
 
     }
@@ -100,7 +93,7 @@ class Customer {
 
         }
 
-        // Keep label above head
+        // Keep label above customer
         this.label.x = this.sprite.x;
         this.label.y = this.sprite.y - 24;
 
@@ -129,7 +122,7 @@ class Customer {
             this.state = "BROWSING";
 
             this.label.setText(
-                this.selectedProduct.name
+                this.selectedProduct
             );
 
             this.waitUntil =
@@ -192,20 +185,24 @@ class Customer {
             return;
         }
 
-        // Record sale
-        recordSale(
-            this.selectedProduct.price
-        );
+        const success =
+            Economy.sellProduct(
+                this.selectedProduct
+            );
 
-        recordCustomer();
+        if (success) {
 
-        notify(
-            `${this.selectedProduct.name} sold for R${this.selectedProduct.price}`
-        );
+            recordCustomer();
+
+            this.label.setText("✓");
+
+        } else {
+
+            this.label.setText("✗");
+
+        }
 
         this.state = "LEAVING";
-
-        this.label.setText("✓");
 
     }
 
@@ -278,7 +275,7 @@ class Customer {
     }
 
     /* ==========================
-       COLORS
+       RANDOM CUSTOMER COLOR
     ========================== */
 
     getRandomColor() {
