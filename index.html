@@ -1,0 +1,131 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Township Shop Tycoon</title>
+
+    <meta name="description" content="Build the biggest shop in the township. Sell bread, chips and cold drinks, earn money, expand your business and become a retail tycoon.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Phaser -->
+    <script src="vendor/phaser.min.js"></script>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <h1>Township Shop Tycoon</h1>
+        <p>Loading shop...</p>
+    </div>
+
+    <!-- Main Layout -->
+    <div id="game-layout">
+
+        <!-- Top Bar -->
+        <header id="top-bar">
+
+            <div class="stat-card">
+                <span class="label">Cash</span>
+                <span id="cash-display">R500</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="label">Customers</span>
+                <span id="customer-count">0</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="label">Sales</span>
+                <span id="sales-count">0</span>
+            </div>
+
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content">
+
+            <!-- Game Canvas -->
+            <section id="game-container"></section>
+
+            <!-- Right Panel -->
+            <aside id="shop-panel">
+
+                <h2>Shop Management</h2>
+
+                <div class="panel-section">
+
+                    <h3>Products</h3>
+
+                    <div class="product-row">
+                        <span>Bread</span>
+                        <span>R18</span>
+                    </div>
+
+                    <div class="product-row">
+                        <span>Chips</span>
+                        <span>R10</span>
+                    </div>
+
+                    <div class="product-row">
+                        <span>Cold Drink</span>
+                        <span>R25</span>
+                    </div>
+
+                </div>
+
+                <div class="panel-section">
+
+                    <h3>Upgrades</h3>
+
+                    <button id="buy-shelf-btn" class="upgrade-btn">
+                        Buy Extra Shelf (R500)
+                    </button>
+
+                    <button id="buy-fridge-btn" class="upgrade-btn">
+                        Buy Fridge (R1000)
+                    </button>
+
+                    <button id="buy-shop-btn" class="upgrade-btn">
+                        Expand Shop (R2500)
+                    </button>
+
+                </div>
+
+                <div class="panel-section">
+
+                    <h3>Business Goal</h3>
+
+                    <p>
+                        Reach <strong>R10,000</strong> to become a Township Shop Tycoon.
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </main>
+
+        <!-- Event Feed -->
+        <section id="event-feed">
+
+            <div id="notifications">
+                Welcome to Township Shop Tycoon!
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="js/SaveManager.js"></script>
+    <script src="js/EconomySystem.js"></script>
+    <script src="js/Customer.js"></script>
+    <script src="js/ShopScene.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+```
